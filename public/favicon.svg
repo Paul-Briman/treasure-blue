@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M3 10.5 12 3l9 7.5" />
-  <path d="M5 9.5V21h14V9.5" />
-  <path d="M9.5 21v-6h5v6" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="5" fill="#16263f" />
+  <rect x="13" y="13" width="6" height="6" transform="rotate(45 16 16)" fill="#c0a46e" />
+  <text x="16" y="27" font-family="'DM Sans', system-ui, sans-serif" font-size="5.5" font-weight="700" letter-spacing="1" text-anchor="middle" fill="#f7f3ea">TB</text>
 </svg>

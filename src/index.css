@@ -1,18 +1,146 @@
 @import 'tailwindcss';
 
+/* ------------------------------------------------------------------ */
+/* Treasure Blue theme tokens (Tailwind v4)                           */
+/* Midnight navy + warm ivory, with a restrained champagne accent     */
+/* and stone/taupe secondary surfaces — boutique hospitality.         */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-navy: #16263f; /* midnight navy (primary dark) */
+  --color-navy-700: #22395a; /* lifted navy for panels */
+  --color-navy-900: #101d31; /* deepest navy */
+
+  --color-ivory: #f7f3ea; /* warm ivory (primary light) */
+  --color-cream: #efe8da;
+  --color-stone: #e4ddce;
+  --color-sand: #ddd2bd;
+
+  --color-taupe: #9a8c77; /* muted labels */
+  --color-slate: #534d43; /* body text on light (warm) */
+  --color-charcoal: #2c2b28;
+
+  --color-champagne: #c0a46e; /* muted brass / champagne accent */
+  --color-champagne-soft: #d8c196;
+  --color-champagne-dark: #937549; /* legible gold on light */
+
+  --font-display: 'Cormorant Garamond', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --shadow-soft: 0 24px 60px -34px rgba(16, 29, 49, 0.4);
+  --shadow-lift: 0 40px 90px -40px rgba(16, 29, 49, 0.5);
+}
+
+/* ------------------------------------------------------------------ */
+/* Base                                                               */
+/* ------------------------------------------------------------------ */
 :root {
   color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: 0.002em;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-champagne);
+  color: var(--color-navy);
+}
+
+.hairline {
+  height: 1px;
+  width: 3.5rem;
+  background: linear-gradient(90deg, var(--color-champagne), transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Scroll-reveal (JS toggles .is-visible)                             */
+/* ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes slow-zoom {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 24s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-slow-zoom {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
