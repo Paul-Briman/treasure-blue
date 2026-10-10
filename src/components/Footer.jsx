@@ -1,8 +1,15 @@
-import { Phone, MapPin, Navigation } from 'lucide-react'
+import { Phone, MapPin, Navigation, MessageCircle } from 'lucide-react'
 import Brand from './Brand'
 import Button from './Button'
 import { NAV_LINKS, BRAND } from '../data/site'
-import { PHONE_DISPLAY, PHONE_TEL, ADDRESS_INLINE, MAPS_URL } from '../lib/contact'
+import {
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  ADDRESS_INLINE,
+  MAPS_URL,
+  WHATSAPP_URL,
+  WHATSAPP_DISPLAY,
+} from '../lib/contact'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -50,6 +57,17 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex gap-3">
+                <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-champagne" />
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-champagne-soft"
+                >
+                  WhatsApp · {WHATSAPP_DISPLAY}
+                </a>
+              </li>
+              <li className="flex gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-champagne" />
                 <span>{ADDRESS_INLINE}</span>
               </li>
@@ -57,6 +75,14 @@ export default function Footer() {
             <div className="mt-6 flex flex-wrap gap-3">
               <Button href={`tel:${PHONE_TEL}`} variant="champagne">
                 Call to Enquire
+              </Button>
+              <Button
+                href={WHATSAPP_URL}
+                external
+                variant="outlineLight"
+                icon={<MessageCircle className="h-4 w-4" />}
+              >
+                WhatsApp
               </Button>
               <Button href={MAPS_URL} external variant="outlineLight" icon={<Navigation className="h-4 w-4" />}>
                 Directions
